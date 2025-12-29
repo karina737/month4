@@ -1,0 +1,19 @@
+{% load static %}
+
+
+
+   <h1>Список продуктов</h1>
+
+<ul class="news-list">
+    <!-- тут обращаемся к ключу во views.py который прописываем в нашем случае это blog -->
+    {% for i in products %}
+    <li class="news-card">
+        <h3>{{ i.name_products }}</h3>
+        <img src="{{ i.image.url }}" alt="" width="200" height="200">
+        <br>
+        <data>{{ i.create_at }}</data>
+        <br>
+        <button><a href="/products_list/{{i.id }}/">Развернуть</a></button>
+    </li>
+    {% endfor %}
+</ul>
