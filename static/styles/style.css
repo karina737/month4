@@ -1,0 +1,416 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f7f9f7;
+  color: #1f2a1f;
+}
+
+/* ===== HEADER ===== */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 18px;
+  background: #ffffff;
+  border-bottom: 1px solid #e6eee6;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 18px;
+  color: #1c6b2a;
+  white-space: nowrap;
+}
+
+.nav {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.nav__link {
+  text-decoration: none;
+  color: #243324;
+  padding: 8px 10px;
+  border-radius: 10px;
+  transition: background 0.15s;
+}
+
+.nav__link:hover {
+  background: #eaf6ea;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-weight: 600;
+  border: 1px solid transparent;
+}
+
+.btn--ghost {
+  background: #ffffff;
+  border-color: #d9e6d9;
+  color: #243324;
+}
+
+.btn--ghost:hover {
+  background: #f0f7f0;
+}
+
+.btn--basket {
+  background: #1c6b2a;
+  color: #ffffff;
+}
+
+.btn--basket:hover {
+  background: #15551f;
+}
+
+/* ===== FOOTER ===== */
+
+.footer {
+  background: #ffffff;
+  border-top: 1px solid #e6eee6;
+  padding: 30px 20px;
+  margin-top: 60px;
+}
+
+.footer__content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  gap: 20px;
+  text-align: center;
+}
+
+.footer__brand {
+  font-weight: 700;
+  color: #1c6b2a;
+}
+
+.footer__brand span {
+  display: block;
+  font-weight: 400;
+  font-size: 14px;
+  color: #4a5a4a;
+}
+
+.footer__links {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.footer__links a {
+  text-decoration: none;
+  color: #243324;
+}
+
+.footer__links a:hover {
+  text-decoration: underline;
+}
+
+.footer__copy {
+  font-size: 14px;
+  color: #6b7a6b;
+}
+
+/* ===== MOBILE ===== */
+
+@media (max-width: 780px) {
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .nav,
+  .actions {
+    justify-content: center;
+  }
+
+  .logo {
+    text-align: center;
+  }
+}
+/* ===== КОНТЕЙНЕР ===== */
+.news-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* ===== ЗАГОЛОВОК ===== */
+.news-title {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 40px;
+}
+
+/* ===== СЕТКА ===== */
+.news-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  justify-items: center;
+}
+
+/* ===== КАРТОЧКА ===== */
+.news-card {
+  width: 100%;
+  max-width: 320px;
+
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+
+  display: flex;
+  flex-direction: column;
+
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease;
+}
+
+.news-card:hover {
+  transform: translateY(-4px);
+}
+
+/* ===== НАЗВАНИЕ ===== */
+.news-name {
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+/* ===== КАРТИНКА ===== */
+.news-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+/* ===== ДАТА ===== */
+.news-date {
+  text-align: center;
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 16px;
+}
+
+/* ===== КНОПКА ===== */
+.news-button {
+  margin-top: auto;
+
+  display: block;
+  text-align: center;
+
+  padding: 10px 0;
+  background: #111;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+
+  transition: background 0.2s ease;
+}
+
+.news-button:hover {
+  background: #333;
+}
+
+/* ===== АДАПТИВ ===== */
+@media (max-width: 900px) {
+  .news-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .news-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* =========================
+   PRODUCT DETAIL PAGE
+========================= */
+
+.news-detail {
+  max-width: 950px;
+  margin: 0 auto;
+  padding: 40px 20px;
+
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
+}
+
+.news-title {
+  font-size: 32px;
+  text-align: center;
+  margin: 0 0 24px;
+  color: #111;
+}
+
+/* Image block */
+.news-media {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 22px;
+}
+
+.news-media img {
+  width: 100%;
+  max-width: 720px;
+  height: 360px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+}
+
+/* Info rows */
+.news-price,
+.news-stock,
+.news-category,
+.news-date {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 10px 0;
+  color: #222;
+}
+
+/* Make “Цена/Кол-во/Категория/Дата” выглядеть как бейджи */
+.news-price,
+.news-stock,
+.news-category,
+.news-date {
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: #f6f7fb;
+  border: 1px solid #e8eaf2;
+}
+
+/* Date tag <data> */
+.news-date {
+  display: block;
+}
+
+/* =========================
+   COMMENTS
+========================= */
+
+.comments {
+  max-width: 950px;
+  margin: 24px auto 70px;
+  padding: 28px 20px;
+
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.06);
+}
+
+.comments-title {
+  font-size: 22px;
+  margin: 0 0 18px;
+  color: #111;
+}
+
+/* List */
+.comments-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.comments-list li {
+  border: 1px solid #e9e9ef;
+  background: #fafbff;
+  border-radius: 12px;
+  padding: 16px 16px;
+}
+
+/* Review text */
+.rating,
+.review,
+.date {
+  margin: 8px 0;
+  color: #222;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.review {
+  word-wrap: break-word;
+}
+
+/* Recommended text (убираем inline style, если хочешь позже) */
+.recommended {
+  margin: 8px 0;
+  font-weight: 600;
+}
+
+/* Rating style */
+.star {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #111;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  margin-left: 6px;
+}
+
+/* No comments */
+.no-comments {
+  margin: 0;
+  padding: 16px 14px;
+  border-radius: 12px;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  color: #9a3412;
+}
+
+/* =========================
+   ADAPTIVE
+========================= */
+
+@media (max-width: 700px) {
+  .news-title {
+    font-size: 24px;
+  }
+
+  .news-media img {
+    height: 240px;
+  }
+
+  .news-detail,
+  .comments {
+    padding: 22px 14px;
+  }
+}

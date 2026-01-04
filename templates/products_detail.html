@@ -1,5 +1,9 @@
+
 {% load static %}
 
+{% include 'header.html' %}
+<link rel="stylesheet" href="{% static 'styles/style.css' %}">
+<link rel="stylesheet" href="{% static 'styles/style.css' %}?v=2">
 
   <!-- Во всех двойных фигурных скобках - передаем ключ из views.py и названия поля из models.py -->
 
@@ -15,27 +19,44 @@
     <p class="news-stock">Кол-во на складе: {{ products_id.stock }} шт. </p>
     <p class="news-category">Категория: {{ products_id.type_products }}</p>
 
-    <data class="news-date">Дата: {{ products_id.create_at }}</data>
+    <data class="news-date">Дата: {{ products_id.created_at }}</data>
 
 </div>
 
 <!-- Comments -->
 <div class="comments">
   <h3 class="comments-title">Отзывы</h3>
-  {% for i in products_id.review.all %}
-  <ul>
+  {% if products_id.reviews.all %}
+   <ul class="comments-list">
+
+  {% for i in products_id.reviews.all %}
     <li>
       <p class="rating">Оценка: 
-        <span class="stars" aria-hidden="true">
+        <span class="love" aria-hidden="true">
           <span class="star filled">{{ i.marks }}</span>
         </span>
       </p>
 
-      <p class="review">Отзыв: {{ i.name_products }}</p>
+      <p class="review">Отзыв: {{ i.text}}</p>
+      {% if i.is_recommended %}
+        <p class="recommended" style="color: green;">
+          ✔ Рекомендует продукт
+        </p>
+      {% else %}
+        <p class="recommended" style="color: red;">
+          ✘ Не рекомендует продукт
+        </p>
+      {% endif %}
 
-      <p class="date">Дата: {{ i.create_at }}</p>
+      <p class="date">Дата: {{ i.created_at }}</p>
     </li>
+    {% endfor %}
 
   </ul>
-  {% endfor %}
-</div>
+        {% else %}
+            <p class="no-comments">Нет отзывов</p>
+        {% endif %}
+      
+
+ {% include 'footer.html' %}
+ 

@@ -1,19 +1,31 @@
 {% load static %}
+{% include 'header.html' %}
+<link rel="stylesheet" href="{% static 'styles/style.css' %}">
+<link rel="stylesheet" href="{% static 'styles/style.css' %}?v=2">
+<main class="news-container">
+  <h1 class="news-title">Список продуктов</h1>
 
-
-
-   <h1>Список продуктов</h1>
-
-<ul class="news-list">
-    <!-- тут обращаемся к ключу во views.py который прописываем в нашем случае это blog -->
+  <ul class="news-list">
     {% for i in products %}
-    <li class="news-card">
-        <h3>{{ i.name_products }}</h3>
-        <img src="{{ i.image.url }}" alt="" width="200" height="200">
-        <br>
-        <data>{{ i.create_at }}</data>
-        <br>
-        <button><a href="/products_list/{{i.id }}/">Развернуть</a></button>
-    </li>
+      <li class="news-card">
+
+        <h3 class="news-name">{{ i.name_products }}</h3>
+
+        <img
+          class="news-image"
+          src="{{ i.image.url }}"
+          alt="{{ i.name_products }}"
+        >
+
+        <span class="news-date">{{ i.create_at }}</span>
+
+        <a class="news-button" href="/products_list/{{ i.id }}/">
+          Развернуть
+        </a>
+
+      </li>
     {% endfor %}
-</ul>
+  </ul>
+</main>
+
+{% include 'footer.html' %}
