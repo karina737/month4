@@ -1,9 +1,8 @@
 
 {% load static %}
 
-{% include 'header.html' %}
-<link rel="stylesheet" href="{% static 'styles/style.css' %}">
-<link rel="stylesheet" href="{% static 'styles/style.css' %}?v=2">
+{% include '../header.html' %}
+<link rel="stylesheet" href="{% static 'styles/style.css' %}?v=4">
 
   <!-- Во всех двойных фигурных скобках - передаем ключ из views.py и названия поля из models.py -->
 
@@ -58,5 +57,5 @@
         {% endif %}
       
 
- {% include 'footer.html' %}
+ {% include '../footer.html' %}
  

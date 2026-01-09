@@ -8,7 +8,7 @@ def products(request):
          products=Products.objects.all()
      return render(
          request,
-         template_name='products_list.html',
+         template_name='products/products_list.html',
          context={
              'products': products
          }
@@ -19,7 +19,7 @@ def products_detail(request, id):
         products_id=get_object_or_404(Products, id=id)
     return render(
          request,
-         template_name='products_detail.html',
+         template_name='products/products_detail.html',
          context={
              'products_id': products_id
          }

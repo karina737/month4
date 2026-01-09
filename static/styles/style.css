@@ -153,6 +153,54 @@ body {
   margin: 0 auto;
   padding: 40px 20px;
 }
+/* Центрируем блок с формой */
+.form-container{
+  min-height: 70vh;          /* высота, чтобы было по центру */
+  display: flex;
+  justify-content: center;   /* по горизонтали */
+  align-items: center;       /* по вертикали */
+  padding: 40px 16px;
+}
+
+/* Делаем форму карточкой */
+.form-container form{
+  width: 420px;
+  background: #fff;
+  padding: 24px 26px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+/* Чтобы поля и подписи шли ровно */
+.form-container form p{
+  margin: 0 0 14px;
+}
+
+/* Инпуты и select — на всю ширину */
+.form-container input,
+.form-container select{
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  border: 1px solid #d9d9d9;
+  border-radius: 10px;
+  outline: none;
+}
+
+/* Кнопки красиво и рядом */
+.button-group{
+  display: flex;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.button-group button{
+  flex: 1;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
 
 /* ===== ЗАГОЛОВОК ===== */
 .news-title {
@@ -413,4 +461,18 @@ body {
   .comments {
     padding: 22px 14px;
   }
+}
+.form-group{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.input{
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #d9d9d9;
+  border-radius: 12px;
+  outline: none;
 }

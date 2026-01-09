@@ -1,0 +1,41 @@
+{% load static %}
+{% include '../header.html' %}
+
+<link rel="stylesheet" href="{% static 'styles/style.css' %}?v=4">
+
+   <main class="news-container">
+    <h1 class="news-title">Список продуктов :</h1>
+
+    <ul class="news-list">
+        {% for i in basket %}
+        <li class="news-card">
+            <h3 class="news-name">Наименование: {{ i.product_name }}</h3>
+            <h3 class="news-name">Количество: {{ i.quantity }}</h3>
+           <h3 class="news-name">
+         Тип доставки:
+         {% if i.status_delivery == 'delivery' %}
+         🚚 Доставка
+         {% elif i.status_delivery == 'pickup' %}
+        🏪 Самовывоз
+         {% else %}
+        {{ i.status_delivery }}
+         {% endif %}
+        </h3>
+
+
+        <a href="/basket_list/{{i.id}}/update/" class="news-button">
+                Обновить корзину
+            </a>
+
+        <a href="/basket_list/{{i.id}}/delete/" class="news-button">
+                Удалить продукт
+            </a>
+
+        </li>
+        {% endfor %}
+    </ul>
+</main>
+
+
+
+{% include '../footer.html' %}

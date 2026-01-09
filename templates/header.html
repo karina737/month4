@@ -6,12 +6,19 @@
     <a class="nav__link" href="ex_1">Блог</a>
     <a class="nav__link" href="ex_3">О нас</a>
     <a class="nav__link" href="#">Hashtags</a>
-    <a class="nav__link" href="/admin/" class="admin">Админ-панель</a>
+    <a class="nav__link admin" href="/admin/">Админ-панель</a>
   </nav>
 
   <div class="actions">
     <a class="btn btn--ghost" href="#">Регистрация</a>
     <a class="btn btn--ghost" href="#">Авторизация</a>
-    <a class="btn btn--basket" href="#">🧺 BASKET</a>
+
+    <a class="btn btn--basket" href="{% url 'basket_list' %}">
+      🧺 BASKET
+    </a>
+
+    <a class="btn btn--ghost" href="{% url 'create_basket' %}">
+      ➕ Добавить продукт
+    </a>
   </div>
 </header>
