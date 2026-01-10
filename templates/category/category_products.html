@@ -1,0 +1,20 @@
+
+{% load static %}
+
+{% include '../header.html' %}
+<link rel="stylesheet" href="{% static 'styles/style.css' %}?v=5">
+<h1>Категория: {{ category.name }}</h1>
+
+<ul>
+  {% for p in products %}
+    <li>
+      <strong>{{ p.name }}</strong>
+      ({{ p.category.name }})
+    </li>
+  {% empty %}
+    <li>В этой категории пока нет продуктов</li>
+  {% endfor %}
+</ul>
+
+<a href="{% url 'categories' %}">← Назад к категориям</a>
+{% include '../footer.html' %}
