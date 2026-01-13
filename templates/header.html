@@ -6,17 +6,32 @@
     <a class="nav__link" href="ex_1">Блог</a>
     <a class="nav__link" href="ex_3">О нас</a>
     <a class="nav__link" href="#">Hashtags</a>
-    <a class="nav__link admin" href="/admin/">Админ-панель</a>
+    
+    <a class="nav__link {% if request.resolver_match.url_name == 'apply' %}active{% endif %}"
+       href="{% url 'apply' %}">
+      📝 Анкета
+    </a>
+    {% if user.is_authenticated %}
+      <a class="nav__link {% if request.resolver_match.url_name == 'applications' %}active{% endif %}"
+         href="{% url 'applications' %}">
+        Анкеты
+      </a>
+    {% endif %}
+    {% if user.is_staff %}
+      <a class="nav__link admin" href="/admin/">Админ-панель</a>
+    {% endif %}
   </nav>
-
   <div class="actions">
-    <a class="btn btn--ghost" href="#">Регистрация</a>
-    <a class="btn btn--ghost" href="#">Авторизация</a>
-
-    <a class="btn btn--basket" href="{% url 'basket_list' %}">
+    {% if user.is_authenticated %}
+      <a class="btn btn--ghost" href="{% url 'logout' %}">Выйти</a>
+    {% else %}
+      <a class="btn btn--ghost" href="{% url 'login' %}">Авторизация</a>
+    {% endif %}
+  </div>
+</header>
+      <a class="btn btn--basket" href="{% url 'basket_list' %}">
       🧺 BASKET
     </a>
-
     <a class="btn btn--ghost" href="{% url 'create_basket' %}">
       ➕ Добавить продукт
     </a>

@@ -1,0 +1,22 @@
+{% load static %}
+{% include '../header.html' %}
+
+<link rel="stylesheet" href="{% static 'styles/style.css' %}?v=6">
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Успешно</title>
+</head>
+<body>
+  <h1>✅ Анкета отправлена!</h1>
+  <p>Спасибо! Мы рассмотрим вашу заявку.</p>
+
+  <p>
+    <a href="/">Заполнить ещё одну анкету</a>
+  </p>
+</body>
+</html>
+
+{% include '../footer.html' %}

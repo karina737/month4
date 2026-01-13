@@ -1,0 +1,123 @@
+{% load static %}
+{% include '../header.html' %}
+
+<link rel="stylesheet" href="{% static 'styles/style.css' %}?v=6"><!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Анкета кандидата</title>
+</head>
+<body>
+  <h1>Анкета кандидата (Backend)</h1>
+
+  <form method="post">
+    {% csrf_token %}
+
+    <p>
+      <label>ФИО</label><br />
+      <input type="text" name="full_name" required />
+    </p>
+
+    <p>
+      <label>Телефон</label><br />
+      <input type="text" name="phone_number" value="+996" required />
+    </p>
+
+    <p>
+      <label>Email</label><br />
+      <input type="email" name="email" required />
+    </p>
+
+    <p>
+      <label>Город</label><br />
+      <input type="text" name="city" required />
+    </p>
+
+    <p>
+      <label>Пол</label><br />
+      <select name="gender" required>
+        <option value="" disabled selected>Выберите</option>
+        <option value="MALE">MALE</option>
+        <option value="FEMALE">FEMALE</option>
+      </select>
+    </p>
+
+    <p>
+      <label>Формат работы</label><br />
+      <select name="format" required>
+        <option value="" disabled selected>Выберите</option>
+        <option value="OFFICE">OFFICE</option>
+        <option value="REMOTE">REMOTE</option>
+        <option value="HYBRID">HYBRID</option>
+      </select>
+    </p>
+
+    <p>
+      <label>Уровень</label><br />
+      <select name="level" required>
+        <option value="" disabled selected>Выберите</option>
+        <option value="INTERN">INTERN</option>
+        <option value="JUNIOR">JUNIOR</option>
+        <option value="MIDDLE">MIDDLE</option>
+        <option value="SENIOR">SENIOR</option>
+      </select>
+    </p>
+
+    <p>
+      <label>Основной язык</label><br />
+      <select name="primary_language" required>
+        <option value="" disabled selected>Выберите</option>
+        <option value="PYTHON">PYTHON</option>
+        <option value="JAVA">JAVA</option>
+        <option value="GO">GO</option>
+        <option value="NODE">NODE</option>
+        <option value="CSHARP">CSHARP</option>
+      </select>
+    </p>
+
+    <p>
+      <label>English level</label><br />
+      <select name="english_level" required>
+        <option value="" disabled selected>Выберите</option>
+        <option value="A2">A2</option>
+        <option value="B1">B1</option>
+        <option value="B2">B2</option>
+        <option value="C1">C1</option>
+      </select>
+    </p>
+
+    <p>
+      <label>Опыт (лет)</label><br />
+      <input type="number" name="years_experience" min="0" max="40" required />
+    </p>
+
+    <p>
+      <label>GitHub URL</label><br />
+      <input type="url" name="github_url" placeholder="https://github.com/username" />
+    </p>
+
+    <p>
+      <label>Resume URL</label><br />
+      <input type="url" name="resume_url" placeholder="https://..." required />
+    </p>
+
+    <p>
+      <label>О себе</label><br />
+      <textarea name="about" rows="5"></textarea>
+    </p>
+
+    <p>
+      <label>
+        <input type="checkbox" name="consent" required />
+        Согласен(на) на обработку данных
+      </label>
+    </p>
+
+    <button type="submit">Отправить анкету</button>
+  </form>
+
+</body>
+</html>
+
+{% include '../footer.html' %}

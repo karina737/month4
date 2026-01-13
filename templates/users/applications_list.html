@@ -1,0 +1,80 @@
+{% load static %}
+{% include '../header.html' %}
+
+<link rel="stylesheet" href="{% static 'styles/style.css' %}?v=6">
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Список анкет</title>
+</head>
+<body>
+  <h1>Все анкеты</h1>
+
+  <p>
+    <a href="/logout/">Выйти</a>
+  </p>
+
+  {% if applications %}
+    <table border="1" cellpadding="8" cellspacing="0">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>ФИО</th>
+          <th>Email</th>
+          <th>Телефон</th>
+          <th>Город</th>
+          <th>Пол</th>
+          <th>Формат</th>
+          <th>Уровень</th>
+          <th>Язык</th>
+          <th>English</th>
+          <th>Опыт</th>
+          <th>Resume</th>
+          <th>О себе</th>
+          <th>Consent</th>
+          <th>Создано</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for u in applications %}
+          <tr>
+            <td>{{ u.id }}</td>
+            <td>{{ u.full_name }}</td>
+            <td>{{ u.email }}</td>
+            <td>{{ u.phone_number }}</td>
+            <td>{{ u.city }}</td>
+            <td>{{ u.gender }}</td>
+            <td>{{ u.format }}</td>
+            <td>{{ u.level }}</td>
+
+            <td>{{ u.primary_language }}</td>
+            <td>{{ u.english_level }}</td>
+
+            <td>{{ u.years_experience }}</td>
+
+            </td>
+
+            <td>
+              {% if u.resume_url %}
+                <a href="{{ u.resume_url }}" target="_blank" rel="noopener">link</a>
+              {% else %}
+                —
+              {% endif %}
+            </td>
+
+            <td>{{ u.about }}</td>
+            <td>{% if u.consent %}✅{% else %}❌{% endif %}</td>
+            <td>{{ u.created_at }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>Анкет пока нет.</p>
+  {% endif %}
+</body>
+</html>
+
+{% include '../footer.html' %}
