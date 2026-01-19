@@ -1,7 +1,7 @@
 {% load static %}
 {% include '../header.html' %}
 
-<link rel="stylesheet" href="{% static 'styles/style.css' %}?v=6"><!doctype html>
+<link rel="stylesheet" href="{% static 'styles/style.css' %}?v=7">
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
@@ -66,7 +66,7 @@
 
     <p>
       <label>Основной язык</label><br />
-      <select name="primary_language" required>
+      <select name="languages" required>
         <option value="" disabled selected>Выберите</option>
         <option value="PYTHON">PYTHON</option>
         <option value="JAVA">JAVA</option>
@@ -78,7 +78,7 @@
 
     <p>
       <label>English level</label><br />
-      <select name="english_level" required>
+      <select name="englishlevel" required>
         <option value="" disabled selected>Выберите</option>
         <option value="A2">A2</option>
         <option value="B1">B1</option>
@@ -91,12 +91,6 @@
       <label>Опыт (лет)</label><br />
       <input type="number" name="years_experience" min="0" max="40" required />
     </p>
-
-    <p>
-      <label>GitHub URL</label><br />
-      <input type="url" name="github_url" placeholder="https://github.com/username" />
-    </p>
-
     <p>
       <label>Resume URL</label><br />
       <input type="url" name="resume_url" placeholder="https://..." required />

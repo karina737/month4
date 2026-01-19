@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from myShop.forms import CategoryForms, ProductForms
 from myShop.models import Category, Product
-
+from django.views import generic
 
 def categories_view(request):
     categories = Category.objects.all()

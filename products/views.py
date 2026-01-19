@@ -17,31 +17,46 @@ class SearchView(generic.ListView):
         context['s'] = self.request.GET.get('s')
         return context
     
+class ProductsView(generic.ListView):
+    template_name='products/products_list.html'
+    context_object_name= 'products'
+    model=Products
     
+    def get_queryset(self):
+        return self.model.objects.all()
+
+class ProductsDetailView(generic.DetailView):
+    template_name = 'products/products_detail.html'
+    model = Products
+    context_object_name = 'products_id'
+
+    def get_object(self, **kwargs):
+        products_id = self.kwargs.get('id')
+        return get_object_or_404(self.model, id=products_id)
 
 
 
-def products(request):
-     if request.method== 'GET':
-         products=Products.objects.all()
-     return render(
-         request,
-         template_name='products/products_list.html',
-         context={
-             'products': products
-         }
-     )
+# def products(request):
+#      if request.method== 'GET':
+#          products=Products.objects.all()
+#      return render(
+#          request,
+#          template_name='products/products_list.html',
+#          context={
+#              'products': products
+#          }
+#      )
 
-def products_detail(request, id):
-    if request.method== 'GET':
-        products_id=get_object_or_404(Products, id=id)
-    return render(
-         request,
-         template_name='products/products_detail.html',
-         context={
-             'products_id': products_id
-         }
-     )
+# def products_detail(request, id):
+#     if request.method== 'GET':
+#         products_id=get_object_or_404(Products, id=id)
+#     return render(
+#          request,
+#          template_name='products/products_detail.html',
+#          context={
+#              'products_id': products_id
+#          }
+#      )
         
     
 

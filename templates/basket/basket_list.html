@@ -7,7 +7,7 @@
     <h1 class="news-title">Список продуктов :</h1>
 
     <ul class="news-list">
-        {% for i in basket %}
+        {% for i in object_list %}
         <li class="news-card">
             <h3 class="news-name">Наименование: {{ i.product_name }}</h3>
             <h3 class="news-name">Количество: {{ i.quantity }}</h3>
