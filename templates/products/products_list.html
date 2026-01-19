@@ -3,6 +3,17 @@
 <link rel="stylesheet" href="{% static 'styles/style.css' %}?v=6">
 <main class="news-container">
   <h1 class="news-title">Список продуктов</h1>
+      <form method="GET" action="{% url 'search' %}" style="margin: 20px 0;">
+        <input 
+            type="text" 
+            name="s" 
+            placeholder="Поиск..." 
+            style="padding: 10px; width: 300px;"
+        >
+        <button type="submit" style="padding: 10px 20px;">
+            Найти
+        </button>
+    </form>
 
   <ul class="news-list">
     {% for i in products %}

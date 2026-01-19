@@ -2,6 +2,24 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from datetime import datetime
 from products.models import Products
+from django.views import generic
+
+class SearchView(generic.ListView):
+    template_name = 'products/products_list.html'
+    context_object_name = 'products'
+    model = Products
+
+    def get_queryset(self):
+        return self.model.objects.filter(name_products__icontains=self.request.GET.get("s"))
+    
+    def get_context_data(self,*, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['s'] = self.request.GET.get('s')
+        return context
+    
+    
+
+
 
 def products(request):
      if request.method== 'GET':

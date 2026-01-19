@@ -1,0 +1,29 @@
+{% load static %}
+
+{% include '../header.html' %}
+
+<link rel="stylesheet" href="{% static 'styles/style.css' %}?v=7">
+
+   <main class="news-container">
+    <h1 class="news-title">Список вещей бренда Miu Miu</h1>
+
+
+    <ul class="news-list">
+        {% for i in clothes %}
+        <li class="news-card">
+            <h3 class="news-name">{{ i.title }}</h3>
+
+    {% if i.image %}
+        <img src="{{ i.image.url }}" alt="{{ i.title }}" style="width:300px;">
+    {% endif %}
+
+            
+            <h3 class="news-name">{{ i.created_at }}</h3>
+            
+        </li>
+        {% endfor %}
+    </ul>
+</main>
+
+
+{% include '../footer.html' %}

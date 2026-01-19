@@ -5,7 +5,7 @@
     <a class="nav__link" href="{% url 'home_page' %}">Главная</a>
     <a class="nav__link" href="ex_1">Блог</a>
     <a class="nav__link" href="ex_3">О нас</a>
-    <a class="nav__link" href="#">Hashtags</a>
+    <a class="nav__link" href="{% url 'all_clothes' %}">Одежда :</a>
     
     <a class="nav__link {% if request.resolver_match.url_name == 'apply' %}active{% endif %}"
        href="{% url 'apply' %}">

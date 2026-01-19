@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'myShop',
     'captcha',
     'users',
+    'clothes',
 ]
 
 MIDDLEWARE = [
