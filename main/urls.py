@@ -10,7 +10,8 @@ urlpatterns = [
     path('', include("basket.urls")), 
     path('', include("myShop.urls")), 
     path("captcha/", include("captcha.urls")),
-    path("", include("users.urls")),
+    path("", include(("users.urls", "users"), namespace="users")),
+    path('movies/', include(("cineboard.urls", "cineboard"), namespace="cineboard")),
     path("", include("clothes.urls")),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -83,8 +83,13 @@ class AdminLoginView(LoginView):
     template_name = 'users/login.html'
     form_class = CaptchaAuthenticationForm
     
+    def dispatch(self, request, *args, **kwargs):
+        print(">>> AdminLoginView CALLED")
+        return super().dispatch(request, *args, **kwargs)
+
     def get_success_url(self):
-        return reverse("home_page")
+        print(">>> SUCCESS URL:", reverse("cineboard:movie_list"))
+        return reverse("cineboard:movie_list")
 
 # def admin_login_view(request):
 #     if request.method == "POST":

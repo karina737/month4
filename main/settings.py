@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'captcha',
     'users',
     'clothes',
+    'cineboard',
 ]
 
 MIDDLEWARE = [
@@ -115,4 +116,6 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 AUTH_USER_MODEL = "users.CustomUser"
+LOGIN_REDIRECT_URL = '/users/login/'
+LOGOUT_REDIRECT_URL = '/movie/'
 

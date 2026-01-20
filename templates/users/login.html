@@ -1,7 +1,7 @@
 {% load static %}
 {% include '../header.html' %}
 
-<link rel="stylesheet" href="{% static 'styles/style.css' %}?v=6">
+<link rel="stylesheet" href="{% static 'styles/style.css' %}?v=9">
 <!doctype html>
 <html lang="ru">
 <head>
@@ -39,20 +39,13 @@
       {% endif %}
     </p>
 
-    <p>
-      <label for="{{ form.captcha.id_for_label }}">CAPTCHA</label><br />
-      {{ form.captcha }}
-      {% if form.captcha.errors %}
-        <br /><span style="color:red;">{{ form.captcha.errors }}</span>
-      {% endif %}
-    </p>
-
+   
     <button type="submit">Войти</button>
   </form>
 
   <hr>
 
-  <form method="post" action="{% url 'logout' %}">
+  <form method="post" action="{% url 'users:logout' %}">
     {% csrf_token %}
     <button type="submit">Выйти</button>
   </form>

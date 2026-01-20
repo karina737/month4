@@ -1,0 +1,18 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'cineboard/cineboard.css' %}?v=9">
+{% block title %}Готово — CineBoard{% endblock %}
+
+{% block content %}
+  <h1 class="h1">Готово ✅</h1>
+  <p class="sub">Фильм сохранён.</p>
+
+  <div class="card">
+    <div class="pad" style="display:flex; gap:10px; flex-wrap:wrap;">
+      <a class="btn primary" href="{% url 'cineboard:movie_create' %}">+ Добавить ещё</a>
+      <a class="btn" href="{% url 'cineboard:movie_list' %}">К списку</a>
+    </div>
+  </div>
+{% endblock %}
+
+

@@ -1,0 +1,31 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'cineboard/cineboard.css' %}?v=9">
+{% block title %}{{ movie.title }} — CineBoard{% endblock %}
+
+{% block content %}
+  <h1 class="h1">{{ movie.title }}</h1>
+  <p class="sub">{{ movie.get_genre_display }} • {{ movie.release_date }}</p>
+
+  <div class="card">
+    <div class="pad">
+      <p class="desc" style="font-size:15px;">{{ movie.description }}</p>
+
+      <div class="meta" style="margin-top:10px;">
+        <span class="pill accent">{{ movie.get_genre_display }}</span>
+        {% if movie.rating %}<span class="pill">⭐ {{ movie.rating }}</span>{% endif %}
+        {% for t in movie.tags.all %}
+          <span class="pill">#{{ t.name }}</span>
+        {% empty %}
+          <span class="pill">Теги: нет</span>
+        {% endfor %}
+      </div>
+
+      <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="btn primary" href="{% url 'cineboard:movie_update' movie.id %}">Редактировать</a>
+        <a class="btn" href="{% url 'cineboard:movie_list' %}">Назад</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+

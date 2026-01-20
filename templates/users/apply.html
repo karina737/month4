@@ -1,7 +1,7 @@
 {% load static %}
 {% include '../header.html' %}
 
-<link rel="stylesheet" href="{% static 'styles/style.css' %}?v=7">
+<link rel="stylesheet" href="{% static 'styles/style.css' %}?v=9">
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
@@ -107,9 +107,10 @@
         Согласен(на) на обработку данных
       </label>
     </p>
-
-    <button type="submit">Отправить анкету</button>
-  </form>
+  <form method="post" action="{% url 'users:apply' %}">
+  {% csrf_token %}
+  <button type="submit">Отправить анкету</button>
+</form>
 
 </body>
 </html>

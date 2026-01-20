@@ -1,0 +1,42 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'cineboard/cineboard.css' %}?v=9">
+{% block title %}Добавить фильм — CineBoard{% endblock %}
+{% block content %}
+  <h1 class="h1">Добавить фильм</h1>
+  <p class="sub">Заполни поля.</p>
+
+  <div class="form">
+    <form method="post">
+      {% csrf_token %}
+
+      {% if form.errors %}
+        <div class="errors">
+          Проверь поля — есть ошибки.
+        </div>
+      {% endif %}
+
+      <label>Название</label>
+      {{ form.title }}
+
+      <label>Описание</label>
+      {{ form.description }}
+
+      <div class="row">
+        <div>
+          <label>Жанр</label>
+          {{ form.genres }}
+        </div>
+        <div>
+          <label>Дата выхода</label>
+          {{ form.release_date }}
+        </div>
+      </div>
+
+      <div style="margin-top:14px; display:flex; gap:10px;">
+        <button class="btn primary" type="submit">Сохранить</button>
+        <a class="btn" href="{% url 'cineboard:movie_list' %}">Отмена</a>
+      </div>
+    </form>
+  </div>
+{% endblock %}
+

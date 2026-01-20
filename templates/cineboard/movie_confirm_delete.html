@@ -1,0 +1,24 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'cineboard/cineboard.css' %}?v=10">
+
+{% block title %}Удалить фильм — CineBoard{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h1 class="h1">Удалить фильм?</h1>
+    <p class="sub">Это действие нельзя отменить.</p>
+
+    <div class="card">
+      <div class="pad" style="text-align:center">
+        <div class="title">{{ object.title }}</div>
+        <p class="desc">{{ object.description|truncatechars:160 }}</p>
+
+        <form method="post" style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:14px;">
+          {% csrf_token %}
+          <button type="submit" class="btn danger">Да, удалить</button>
+          <a class="btn" href="{% url 'cineboard:movie_detail' object.id %}">Отмена</a>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

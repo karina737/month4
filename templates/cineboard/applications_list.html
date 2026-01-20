@@ -1,0 +1,26 @@
+{% load static %}
+
+{% include '../header.html' %}
+
+<link rel="stylesheet" href="{% static 'styles/style.css' %}?v=8">
+
+   <main class="news-container">
+    <h1 class="news-title">Список пользователей</h1>
+
+    <ul class="news-list">
+        {% for i in user_list %}
+        <li class="news-card">
+            <h3 class="news-name">{{ i.username }}</h3>    
+        </li>
+        {% endfor %}
+
+        <form action="{% url 'cineboard: login' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Выйти</button>
+        </form>
+        
+    </ul>
+</main>
+
+
+{% include '../footer.html' %}

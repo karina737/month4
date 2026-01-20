@@ -1,0 +1,58 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'cineboard/cineboard.css' %}?v=10">
+
+{% block title %}Фильмы — CineBoard{% endblock %}
+
+{% block content %}
+<h1 class="h1">Фильмы</h1>
+<p class="sub">Добавляй фильмы через форму.</p>
+
+{% if cinema %}
+  <div class="grid">
+    {% for m in cinema %}
+      <div class="movie-item">
+
+        <div class="movie-actions">
+          <a class="btn small" href="{% url 'cineboard:movie_update' m.id %}">✏️ Изменить</a>
+          <a class="btn small danger" href="{% url 'cineboard:movie_delete' m.id %}">🗑 Удалить</a>
+        </div>
+
+        <a class="card" href="{% url 'cineboard:movie_detail' m.id %}">
+          <div class="pad">
+            <div class="kicker">ID: {{ m.id }} • {{ m.release_date }}</div>
+            <div class="title">{{ m.title }}</div>
+
+            <p class="desc">
+              {{ m.description|truncatechars:120 }}
+            </p>
+
+            <div class="meta">
+              <span class="pill accent">{{ m.get_genre_display }}</span>
+
+              {% if m.rating %}
+                <span class="pill">⭐ {{ m.rating }}</span>
+              {% endif %}
+
+              {% for t in m.tags.all|slice:":2" %}
+                <span class="pill">#{{ t.name }}</span>
+              {% endfor %}
+            </div>
+          </div>
+        </a>
+
+      </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <div class="card">
+    <div class="pad" style="text-align:center">
+      <div class="title">Пока пусто</div>
+      <p class="desc">Нажми кнопку ниже, чтобы добавить первый фильм.</p>
+      <a class="btn primary" href="{% url 'cineboard:movie_create' %}">
+        + Добавить фильм
+      </a>
+    </div>
+  </div>
+{% endif %}
+{% endblock %}
